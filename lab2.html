@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab1</title>
+    <style>
+        div{
+        width:600px;
+        height:800px;
+        border:3px solid #00ff26;
+        }
+        #pp1{
+        width:600px;
+        height:100px;
+        border: none;
+        text-align:center;
+        color: #ffb700
+        ;
+        }
+        #pp2{
+        width:600px;
+        height:150px;
+        border: none;
+        text-align:center;
+        color: #0d00ff
+            /* border-width:5px;
+        border-style:solid;
+        border-color:red green blue purple; */
+        }
+        #pp3{
+        width:600px;
+        height:550px;
+        border: none;
+        text-align:center;
+        }
+        #pp4{
+        width:600px;
+        height:110px;
+        border: none;
+        text-align:center;
+        };
+        button{
+            width: 100px;
+            height: 100px;
+            text-align:center;
+        }
+        button:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        button:focus{
+            outline: none;
+            border: none;
+        }
+     </style>
+
+</head>
+<body onload="init()">
+    <div>
+        <div id="pp1">
+            <h1 id="message">Quiz Starts!</h1>
+        </div>
+        <div id="pp2">
+            <h1 id="num"></h1>
+            <!-- <h1 style="white-space:nowrap;"><p  style="white-space:nowrap;"id="num1"></p>+<p style="white-space:nowrap;" id="num2"></p>=?</h1> -->
+        </div>
+        <!-- <div  id="message"></div> -->
+        <div id="pp3">
+            <div id="pp4">
+                <button style="background: url(images/number1.png); background-size: contain;width: 100px; height: 100px;border: none;" id="1" onclick="checkAnswer(id)"></button>
+                
+                <button style="background: url(images/number2.png); background-size: contain;width: 100px; height: 100px;border: none;"id="2" onclick="checkAnswer(id)"></button>
+                <button style="background: url(images/number3.png); background-size: contain;width: 100px; height: 100px;border: none;"id="3" onclick="checkAnswer(id)"></button>
+            </div>
+            <div id="pp4">
+                <button style="background: url(images/number4.png); background-size: contain;width: 100px; height: 100px;border: none;"id="4" onclick="checkAnswer(id)"> </button>
+                <button style="background: url(images/number5.png); background-size: contain;width: 100px; height: 100px;border: none;"id="5" onclick="checkAnswer(id)"> </button>
+                <button style="background: url(images/number6.png); background-size: contain;width: 100px; height: 100px;border: none;"id="6" onclick="checkAnswer(id)"> </button>
+            </div>
+            <div id="pp4">
+                <button style="background: url(images/number7.png); background-size: contain;width: 100px; height: 100px;border: none;"id="7" onclick="checkAnswer(id)"> </button>
+                <button style="background: url(images/number8.png); background-size: contain;width: 100px; height: 100px;border: none;"id="8" onclick="checkAnswer(id)"> </button>
+                <button style="background: url(images/number9.png); background-size: contain;width: 100px; height: 100px;border: none;"id="9" onclick="checkAnswer(id)"> </button>
+            </div>
+            <div id="pp4">
+                <button style="background: url(images/number0.png); background-size: contain;width: 100px; height: 100px; border: none;"id="0" onclick="checkAnswer(id)"> </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+     var num1 = Math.floor((Math.random() * 4) + 1);
+     var num2 = Math.floor((Math.random() * 4) + 1); 
+     function init(){
+         // 初始化内容       
+         document.getElementById("num").innerHTML = num1.toString()+"+"+num2.toString()+"=?";
+    }
+    function new_quiz(){
+        num1 = Math.floor((Math.random() * 4) + 1);
+        this.num2 = Math.floor((Math.random() * 4) + 1); 
+        
+    }	
+//     function computer(){
+// //首先创建一个函数，不需要形参，computer为自定义的函数名称。
+// //函数用于将所有过程存储在函数中，成为一个运算的方法，在HTML中用鼠标点击的方式调用
+
+//         var inum1 = document.getElementById(num1);
+//         var jg = document.getElementById(iy)
+//         var inum2 = document.getElementById(num2);
+//         var inum3 = document.getElementById(num3);
+// //先创建变量用于获取并保存用户在浏览器界面通过HTML标签输入的元素
+// //document.getElementById（）;即从id获取元素
+
+        
+//         if(num1.value == ''||num2.value == ''){//判断输入的内容是否为空
+//             alert('内容为空，请重新输入');
+//             return;	
+//         }
+//         else if(iy.value == "+"){
+//             num3.value = parseInt(num1.value) + parseInt(num2.value);
+//         }
+// //在id是num3的input输入框中，如果用户选择了加号，就将num1和num2内的内容相加
+// //计算结果输出在num3的输入框(value，显示的值)中
+//         else if(iy.value == "-"){
+//             num3.value = parseInt(num1.value) - parseInt(num2.value);
+//         }
+// //在id是num3的input输入框中，如果用户选择了减号，就将num1和num2内的内容相减
+// //计算结果显示在num3的输入框（value，显示的值）中。下面的乘法与除法类推
+//         else if(iy.value == "*"){
+//             num3.value = parseInt(num1.value) * parseInt(num2.value);
+//         }else{
+//             num3.value = parseInt(num1.value) / parseInt(num2.value);
+//         }//if else if后面无论有多少个if，最终都是用else结束，不应出现if结束的情况
+        
+    // }
+
+    
+function checkAnswer(num){
+    var a=num1+num2
+    if(a==num){
+        document.getElementById("message").innerHTML = "Well done!";
+        new_quiz()
+        document.getElementById("num").innerHTML = num1.toString()+"+"+num2.toString()+"=?";
+    }else{
+        document.getElementById("message").innerHTML = "Sorry!Wrong!";
+    }
+    
+}
+</script>
+</html>

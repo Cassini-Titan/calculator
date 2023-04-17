@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab3</title>
+    <style>
+        div{
+        width:600px;
+        height:800px;
+        border:3px solid #00ff26;
+        }
+        #pp1{
+        width:600px;
+        height:100px;
+        border: none;
+        text-align:center;
+        color: #ffb700
+        ;
+        }
+        #pp2{
+        width:600px;
+        height:150px;
+        border: none;
+        text-align:center;
+        color: #0d00ff
+            /* border-width:5px;
+        border-style:solid;
+        border-color:red green blue purple; */
+        }
+        #pp3{
+        width:600px;
+        height:550px;
+        border: none;
+        text-align:center;
+        }
+        #pp4{
+        width:600px;
+        height:110px;
+        border: none;
+        text-align:center;
+        };
+        button{
+            width: 100px;
+            height: 100px;
+            text-align:center;
+        }
+        button:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        button:focus{
+            outline: none;
+            border: none;
+        }
+     </style>
+
+</head>
+<body onload="init()">
+    <div>
+        <div id="pp1">
+            <h1 id="message">Quiz Starts!</h1>
+        </div>
+        <div id="pp2">
+            <h1 id="num"></h1>
+            <!-- <h1 style="white-space:nowrap;"><p  style="white-space:nowrap;"id="num1"></p>+<p style="white-space:nowrap;" id="num2"></p>=?</h1> -->
+        </div>
+        <!-- <div  id="message"></div> -->
+        <div id="pp3">
+            <div id="pp4">
+                <button style="background: url(images/number1.png); background-size: contain;width: 100px; height: 100px;border: none;" id="1" onclick="buttonPressed(id)"></button>
+                
+                <button style="background: url(images/number2.png); background-size: contain;width: 100px; height: 100px;border: none;"id="2" onclick="buttonPressed(id)"></button>
+                <button style="background: url(images/number3.png); background-size: contain;width: 100px; height: 100px;border: none;"id="3" onclick="buttonPressed(id)"></button>
+            </div>
+            <div id="pp4">
+                <button style="background: url(images/number4.png); background-size: contain;width: 100px; height: 100px;border: none;"id="4" onclick="buttonPressed(id)"> </button>
+                <button style="background: url(images/number5.png); background-size: contain;width: 100px; height: 100px;border: none;"id="5" onclick="buttonPressed(id)"> </button>
+                <button style="background: url(images/number6.png); background-size: contain;width: 100px; height: 100px;border: none;"id="6" onclick="buttonPressed(id)"> </button>
+            </div>
+            <div id="pp4">
+                <button style="background: url(images/number7.png); background-size: contain;width: 100px; height: 100px;border: none;"id="7" onclick="buttonPressed(id)"> </button>
+                <button style="background: url(images/number8.png); background-size: contain;width: 100px; height: 100px;border: none;"id="8" onclick="buttonPressed(id)"> </button>
+                <button style="background: url(images/number9.png); background-size: contain;width: 100px; height: 100px;border: none;"id="9" onclick="buttonPressed(id)"> </button>
+            </div>
+            <div id="pp4">
+                <button style="background: url(images/number0.png); background-size: contain;width: 100px; height: 100px; border: none;"id="0" onclick="buttonPressed(id)"> </button>
+                <button style="background: url(images/enter.png); background-size: contain;width: 100px; height: 100px; border: none;"id="enter" onclick="checkAnswer()"> </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+     var input = 0;
+     var flag;
+     var num1 = Math.floor((Math.random() * 19) + 1);
+     var num2 = Math.floor((Math.random() * 19) + 1); 
+     function init(){
+         // 初始化内容
+         flag=1;     
+         document.getElementById("num").innerHTML = num1.toString()+"+"+num2.toString()+"=?";
+    }
+    function new_quiz(){
+        this.num1 = Math.floor((Math.random() * 19) + 1);
+        this.num2 = Math.floor((Math.random() * 19) + 1); 
+        this.input=0;
+        this.flag=1;
+        
+    }	
+function buttonPressed(num){
+    input=input*10+Number(num);
+    document.getElementById("num").innerHTML = num1.toString()+"+"+num2.toString()+"="+input.toString();
+        // if(flag==1){
+        //     document.getElementById("num").innerHTML =num1.toString()+"+"+num2.toString()+"="+num.toString();
+        //     flag=0;
+        //     input=num*10;
+        // }else{
+        //     document.getElementById("num").innerHTML =document.getElementById("num").innerHTML+num.toString();
+        //     input=Number(input)+Number(num);
+        // }
+    
+}
+
+function checkAnswer(){
+    var a=num1+num2;
+    console.log(a, num1, num2,input);
+    if(a==input){
+        document.getElementById("message").innerHTML = "Well done!";
+        new_quiz()
+        document.getElementById("num").innerHTML = num1.toString()+"+"+num2.toString()+"=?";
+    }else{
+        document.getElementById("message").innerHTML = "Sorry!Wrong!";
+        document.getElementById("num").innerHTML = num1.toString()+"+"+num2.toString()+"=?";
+        input=0;
+        flag=1;
+    }
+    
+}
+</script>
+</html>
